@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Text} from 'react-native';
+
+import {Background} from '../../styles/utils.js';
 
 export default function SignIn() {
   return (
-    <View>
+    <Background>
       <Text>Signin</Text>
-    </View>
+    </Background>
   );
 }
