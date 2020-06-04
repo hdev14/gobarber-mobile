@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 export default function Routes() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator headerMode="none">
       <Stack.Screen name="signin" component={SignIn} />
       <Stack.Screen name="signout" component={SignOut} />
     </Stack.Navigator>
