@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
 import logo from '../../assets/logo.png';
 
@@ -15,6 +15,10 @@ import {
 } from '../../styles/utils';
 
 export default function SignIn({navigation}) {
+  const passwordRef = useRef();
+
+  function handleSubmit() {}
+
   return (
     <Background>
       <Container>
@@ -27,15 +31,20 @@ export default function SignIn({navigation}) {
             keyboardType="email-address"
             autoCorrect={false}
             autoCapitalize="none"
+            returnKeyType="next"
+            onSubmitEditing={() => passwordRef.current.focus()}
           />
 
           <FormInput
             icon="lock-outline"
             placeholder="Digite sua senha"
             secureText
+            ref={passwordRef}
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
           />
 
-          <SubmitButton onPress={() => {}}>Acessar</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
         </Form>
 
         <Link onPress={() => navigation.navigate('signout')}>

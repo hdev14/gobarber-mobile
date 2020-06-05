@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
 import logo from '../../assets/logo.png';
 
@@ -15,6 +15,11 @@ import {
 } from '../../styles/utils';
 
 export default function SignOut({navigation}) {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  function handleSubmit() {}
+
   return (
     <Background>
       <Container>
@@ -25,6 +30,8 @@ export default function SignOut({navigation}) {
             icon="person-outline"
             placeholder="Digite seu nome completo"
             autoCorrect={false}
+            returnKeyType="next"
+            onSubmitEditing={() => emailRef.current.focus()}
           />
 
           <FormInput
@@ -33,15 +40,21 @@ export default function SignOut({navigation}) {
             autoCorrect={false}
             autoCapitalize="none"
             keyboardType="email-address"
+            ref={emailRef}
+            returnKeyType="next"
+            onSubmitEditing={() => passwordRef.current.focus()}
           />
 
           <FormInput
             icon="lock-outline"
             placeholder="Digite sua senha"
             secureText
+            ref={passwordRef}
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
           />
 
-          <SubmitButton onPress={() => {}}>Registrar-se</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Registrar-se</SubmitButton>
         </Form>
 
         <Link onPress={() => navigation.navigate('signin')}>
