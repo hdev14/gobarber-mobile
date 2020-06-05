@@ -2,22 +2,22 @@ import React from 'react';
 
 import logo from '../../assets/logo.png';
 
-import {Background} from '../../styles/utils.js';
 import {
-  SignInContainer,
+  Background,
+  Container,
   Form,
   Image,
   FormInput,
   SubmitButton,
-  SignOutLink,
-  SOLText,
-  SOLTextBold,
-} from './styles';
+  Link,
+  LinkText,
+  LinkTextBold,
+} from '../../styles/utils';
 
-export default function SignIn() {
+export default function SignIn({navigation}) {
   return (
     <Background>
-      <SignInContainer>
+      <Container>
         <Image source={logo} />
 
         <Form>
@@ -38,13 +38,13 @@ export default function SignIn() {
           <SubmitButton onPress={() => {}}>Acessar</SubmitButton>
         </Form>
 
-        <SignOutLink>
-          <SOLText>
+        <Link onPress={() => navigation.navigate('signout')}>
+          <LinkText>
             Ainda não tem conta?
-            <SOLTextBold> Registre-se</SOLTextBold>
-          </SOLText>
-        </SignOutLink>
-      </SignInContainer>
+            <LinkTextBold> Registre-se</LinkTextBold>
+          </LinkText>
+        </Link>
+      </Container>
     </Background>
   );
 }
