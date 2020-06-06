@@ -1,0 +1,44 @@
+import {AuthTypes} from '../actions-types';
+
+export function signInRequest(email, password) {
+  return {
+    type: AuthTypes.SIGN_IN_REGUEST,
+    payload: {
+      email,
+      password,
+    },
+  };
+}
+
+export function signInSuccess(user, token) {
+  return {
+    type: AuthTypes.SIGN_IN_SUCCESS,
+    payload: {
+      user,
+      token,
+    },
+  };
+}
+
+export function signUpRequest(name, email, password) {
+  return {
+    type: AuthTypes.SIGN_UP_REQUEST,
+    payload: {
+      name,
+      email,
+      password,
+    },
+  };
+}
+
+export function signOut() {
+  return {
+    type: AuthTypes.SIGN_OUT,
+  };
+}
+
+export function signFailure() {
+  return {
+    type: AuthTypes.SIGN_FAILURE,
+  };
+}
