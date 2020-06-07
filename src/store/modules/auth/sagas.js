@@ -3,7 +3,7 @@ import {all, call, put, takeLatest} from 'redux-saga/effects';
 
 import {AuthTypes} from '../actions-types';
 import {signInSuccess, signFailure} from './actions';
-import api from '../../../servic;es/api';
+import api from '../../../services/api';
 
 export function* signIn({payload}) {
   try {

@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import {presistReducer} from 'redux-persist';
+import {persistReducer} from 'redux-persist';
 
 export default (reducers) =>
-  presistReducer(
+  persistReducer(
     {
       key: 'gobarber-mobile',
       storage: AsyncStorage,

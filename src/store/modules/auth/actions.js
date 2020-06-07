@@ -2,7 +2,7 @@ import {AuthTypes} from '../actions-types';
 
 export function signInRequest(email, password) {
   return {
-    type: AuthTypes.SIGN_IN_REGUEST,
+    type: AuthTypes.SIGN_IN_REQUEST,
     payload: {
       email,
       password,
