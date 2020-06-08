@@ -1,4 +1,7 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+
+import {signUpRequest} from '../../store/modules/auth/actions';
 
 import logo from '../../assets/logo.png';
 
@@ -17,8 +20,15 @@ import {
 export default function SignOut({navigation}) {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const loading = useSelector((s) => s.auth.loading);
+  const dispatch = useDispatch();
 
-  function handleSubmit() {}
+  function handleSubmit() {
+    dispatch(signUpRequest(name, email, password));
+  }
 
   return (
     <Background>
@@ -32,6 +42,8 @@ export default function SignOut({navigation}) {
             autoCorrect={false}
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
+            value={name}
+            onChangeText={setName}
           />
 
           <FormInput
@@ -43,18 +55,24 @@ export default function SignOut({navigation}) {
             ref={emailRef}
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
+            value={email}
+            onChangeText={setEmail}
           />
 
           <FormInput
             icon="lock-outline"
             placeholder="Digite sua senha"
-            secureText
+            secureTextEntry
             ref={passwordRef}
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
+            value={password}
+            onChangeText={setPassword}
           />
 
-          <SubmitButton onPress={handleSubmit}>Registrar-se</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Registrar-se
+          </SubmitButton>
         </Form>
 
         <Link onPress={() => navigation.navigate('signin')}>

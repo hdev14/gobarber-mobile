@@ -1,4 +1,7 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+
+import {signInRequest} from '../../store/modules/auth/actions';
 
 import logo from '../../assets/logo.png';
 
@@ -16,8 +19,14 @@ import {
 
 export default function SignIn({navigation}) {
   const passwordRef = useRef();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const loading = useSelector((s) => s.auth.loading);
+  const dispatch = useDispatch();
 
-  function handleSubmit() {}
+  function handleSubmit() {
+    dispatch(signInRequest(email, password));
+  }
 
   return (
     <Background>
@@ -33,18 +42,24 @@ export default function SignIn({navigation}) {
             autoCapitalize="none"
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
+            value={email}
+            onChangeText={setEmail}
           />
 
           <FormInput
             icon="lock-outline"
             placeholder="Digite sua senha"
-            secureText
+            secureTextEntry
             ref={passwordRef}
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
+            value={password}
+            onChangeText={setPassword}
           />
 
-          <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Acessar
+          </SubmitButton>
         </Form>
 
         <Link onPress={() => navigation.navigate('signout')}>

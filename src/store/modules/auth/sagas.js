@@ -11,7 +11,7 @@ export function* signIn({payload}) {
     const {user, token} = response.data;
 
     if (user.provider) {
-      Alert(
+      Alert.alert(
         'Falha ao se autenticar',
         'Usuário não pode ser um prestador de serviço',
       );
@@ -22,17 +22,17 @@ export function* signIn({payload}) {
 
     yield put(signInSuccess(user, token));
   } catch (e) {
-    Alert('Falha ao se autenticar', 'E-mail ou senha inválidos');
+    Alert.alert('Falha ao se autenticar', 'E-mail ou senha inválidos');
     yield put(signFailure());
   }
 }
 
 export function* signUp({payload}) {
   try {
-    yield call(api.put, '/users', payload);
-    Alert('Success', 'Cadastro realizado com sucesso!');
+    yield call(api.post, '/users', payload);
+    Alert.alert('Success', 'Cadastro realizado com sucesso!');
   } catch (e) {
-    Alert('Falha no registro', 'Por favor, verifique seus dados.');
+    Alert.alert('Falha no registro', 'Por favor, verifique seus dados.');
   }
 }
 
