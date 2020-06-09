@@ -18,11 +18,3 @@ export const TextInput = styled(TI).attrs({
   font-size: 16px;
   color: #140e02;
 `;
-
-// --color1: #f9f5f0;
-// --color2: #f2ead3;
-// --color3: #f4991a;
-// --color4: #321313;
-
-// --text-color1: #140E02;
-// --text-color2: #100C02;

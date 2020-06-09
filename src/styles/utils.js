@@ -52,3 +52,11 @@ export const LinkTextBold = styled.Text`
   color: #f4991a;
   font-size: 15px;
 `;
+
+// --color1: #f9f5f0;
+// --color2: #f2ead3;
+// --color3: #f4991a;
+// --color4: #321313;
+
+// --text-color1: #140E02;
+// --text-color2: #100C02;
