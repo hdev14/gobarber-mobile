@@ -18,6 +18,7 @@ export default function Routes() {
   return signed ? (
     <Tab.Navigator
       tabBarOptions={{
+        keyboardHidesTabBar: true,
         activeTintColor: '#f4991a',
         activeBackgroundColor: '#f9f5f0',
         inactiveTintColor: '#321313',
