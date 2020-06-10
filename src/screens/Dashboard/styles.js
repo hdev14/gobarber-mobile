@@ -10,6 +10,7 @@ export const Title = styled.Text`
   color: #140e02;
   margin-top: 20px;
   text-transform: capitalize;
+  font-weight: bold;
 `;
 
 export const AppointmentList = styled.FlatList.attrs({

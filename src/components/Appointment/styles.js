@@ -13,7 +13,7 @@ export const AppointmentShape = styled.View.attrs({
 })`
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border-radius: 4px;
   background-color: #f9f5f0;
   align-items: center;
