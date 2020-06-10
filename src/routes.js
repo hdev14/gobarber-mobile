@@ -20,9 +20,10 @@ export default function Routes() {
       tabBarOptions={{
         keyboardHidesTabBar: true,
         activeTintColor: '#f4991a',
-        activeBackgroundColor: '#f9f5f0',
         inactiveTintColor: '#321313',
-        inactiveBackgroundColor: '#f9f5f0',
+        style: {
+          backgroundColor: '#f9f5f0',
+        },
       }}>
       <Tab.Screen
         name="dashboard"
