@@ -4,8 +4,8 @@ import api from '../../services/api';
 
 import Appointment from '../../components/Appointment';
 
-import {Background} from '../../styles/utils';
-import {DashboardShape, Title, AppointmentList} from './styles';
+import {Background, Title} from '../../styles/utils';
+import {DashboardShape, AppointmentList} from './styles';
 
 export default function Dashboard() {
   const [appointments, setAppointments] = useState([]);
