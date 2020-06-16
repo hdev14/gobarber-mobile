@@ -21,7 +21,16 @@ export const SubmitButton = styled(TouchableOpacity)`
   border-radius: 4px;
 `;
 
-export const TextSubmitButton = styled.Text`
+export const LogoutButton = styled(TouchableOpacity)`
+  height: 46px;
+  justify-content: center;
+  align-items: center;
+  background-color: tomato;
+  border-radius: 4px;
+  margin-top: 10px;
+`;
+
+export const TextButton = styled.Text`
   font-size: 16px;
   font-weight: bold;
   color: #fff;

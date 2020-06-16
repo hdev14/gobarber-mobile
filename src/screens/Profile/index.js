@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {updateProfileRequest} from '../../store/modules/user/actions';
+import {signOut} from '../../store/modules/auth/actions';
 
 import {Background, Title, FormInput} from '../../styles/utils';
 import {
@@ -9,7 +10,8 @@ import {
   Form,
   Separator,
   SubmitButton,
-  TextSubmitButton,
+  LogoutButton,
+  TextButton,
 } from './styles';
 
 export default function Profile() {
@@ -43,6 +45,10 @@ export default function Profile() {
         confirmPassword,
       }),
     );
+  }
+
+  function handleLogout() {
+    dispatch(signOut());
   }
 
   return (
@@ -108,8 +114,12 @@ export default function Profile() {
           />
 
           <SubmitButton onPress={handleSubmit}>
-            <TextSubmitButton>Atualizar perfil</TextSubmitButton>
+            <TextButton>Atualizar perfil</TextButton>
           </SubmitButton>
+
+          <LogoutButton onPress={handleLogout}>
+            <TextButton>Sair</TextButton>
+          </LogoutButton>
         </Form>
       </Container>
     </Background>
