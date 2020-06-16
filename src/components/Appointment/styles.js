@@ -18,6 +18,7 @@ export const AppointmentShape = styled.View.attrs({
   background-color: #f9f5f0;
   align-items: center;
   padding: 15px;
+  opacity: ${(props) => (props.past ? 0.7 : 1)};
 `;
 
 export const Left = styled.View`

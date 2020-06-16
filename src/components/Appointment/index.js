@@ -6,19 +6,19 @@ import pt from 'date-fns/locale/pt';
 
 import {AppointmentShape, Left, Avatar, Info, Title, Time} from './styles';
 
-export default function Appointment({data}) {
+export default function Appointment({data, handleCancel}) {
   const dateRelative = useMemo(() => {
     return formatRelative(parseISO(data.date), new Date(), {locale: pt});
   }, [data.date]);
 
   return (
-    <AppointmentShape>
+    <AppointmentShape past={data.past}>
       <Left>
         <Avatar
           source={{
             uri: data.provider.avatar
               ? data.provider.avatar.url
-              : 'https://api.adorable.io/avatar/50/gobarber.png',
+              : `https://api.adorable.io/avatar/50/${data.provider.name}.png`,
           }}
         />
 
@@ -27,10 +27,11 @@ export default function Appointment({data}) {
           <Time>{dateRelative}</Time>
         </Info>
       </Left>
-
-      <TouchableOpacity onPress={() => {}}>
-        <Icon name="event-busy" size={30} color="#ff6347" />
-      </TouchableOpacity>
+      {data.cancelable && !data.canceled_at && (
+        <TouchableOpacity onPress={() => handleCancel(data.id)}>
+          <Icon name="event-busy" size={30} color="#ff6347" />
+        </TouchableOpacity>
+      )}
     </AppointmentShape>
   );
 }

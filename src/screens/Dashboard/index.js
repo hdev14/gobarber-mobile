@@ -13,12 +13,27 @@ export default function Dashboard() {
   useEffect(() => {
     async function fetchAppointments() {
       const response = await api.get('/appointments');
-
       setAppointments(response.data);
     }
 
     fetchAppointments();
   }, []);
+
+  async function handleCancel(id) {
+    const response = await api.delete(`/appointments/${id}`);
+    const newData = appointments.map((appointment) => {
+      if (appointment.id === id) {
+        return {
+          ...appointment,
+          canceled_at: response.data.canceled_at,
+        };
+      }
+
+      return appointment;
+    });
+
+    setAppointments(newData);
+  }
 
   return (
     <Background>
@@ -28,7 +43,9 @@ export default function Dashboard() {
         <AppointmentList
           data={appointments}
           keyExtractor={(item) => String(item.id)}
-          renderItem={({item}) => <Appointment data={item} />}
+          renderItem={({item}) => (
+            <Appointment handleCancel={handleCancel} data={item} />
+          )}
         />
       </DashboardShape>
     </Background>
