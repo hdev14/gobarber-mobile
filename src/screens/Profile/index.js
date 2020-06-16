@@ -3,8 +3,14 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {updateProfileRequest} from '../../store/modules/user/actions';
 
-import {Background, Title, FormInput, SubmitButton} from '../../styles/utils';
-import {Form, Separator} from './styles';
+import {Background, Title, FormInput} from '../../styles/utils';
+import {
+  Container,
+  Form,
+  Separator,
+  SubmitButton,
+  TextSubmitButton,
+} from './styles';
 
 export default function Profile() {
   const profile = useSelector((s) => s.user.profile);
@@ -41,69 +47,71 @@ export default function Profile() {
 
   return (
     <Background>
-      <Title>Meu perfil</Title>
+      <Container>
+        <Title>Meu perfil</Title>
 
-      <Form>
-        <FormInput
-          icon="person-outline"
-          autoCorrect={false}
-          returnKeyType="next"
-          onSubmitEditing={() => emailRef.current.focus()}
-          value={name}
-          onChangeText={setName}
-        />
+        <Form>
+          <FormInput
+            icon="person-outline"
+            autoCorrect={false}
+            returnKeyType="next"
+            onSubmitEditing={() => emailRef.current.focus()}
+            value={name}
+            onChangeText={setName}
+          />
 
-        <FormInput
-          icon="mail-outline"
-          keyboardType="email-address"
-          autoCorrect={false}
-          autoCapitalize="none"
-          ref={emailRef}
-          returnKeyType="next"
-          onSubmitEditing={() => oldPasswordRef.current.focus()}
-          value={email}
-          onChangeText={setEmail}
-        />
+          <FormInput
+            icon="mail-outline"
+            keyboardType="email-address"
+            autoCorrect={false}
+            autoCapitalize="none"
+            ref={emailRef}
+            returnKeyType="next"
+            onSubmitEditing={() => oldPasswordRef.current.focus()}
+            value={email}
+            onChangeText={setEmail}
+          />
 
-        <Separator />
+          <Separator />
 
-        <FormInput
-          icon="lock-outline"
-          placeholder="Digite sua senha atual"
-          secureTextEntry
-          ref={oldPasswordRef}
-          returnKeyType="next"
-          onSubmitEditing={() => passwordRef.current.focus()}
-          value={oldPassword}
-          onChangeText={setOldPassword}
-        />
+          <FormInput
+            icon="lock-outline"
+            placeholder="Digite sua senha atual"
+            secureTextEntry
+            ref={oldPasswordRef}
+            returnKeyType="next"
+            onSubmitEditing={() => passwordRef.current.focus()}
+            value={oldPassword}
+            onChangeText={setOldPassword}
+          />
 
-        <FormInput
-          icon="lock-outline"
-          placeholder="Digite a nova senha"
-          secureTextEntry
-          ref={passwordRef}
-          returnKeyType="next"
-          onSubmitEditing={() => confirmPasswordRef.current.focus()}
-          value={password}
-          onChangeText={setPassword}
-        />
+          <FormInput
+            icon="lock-outline"
+            placeholder="Digite a nova senha"
+            secureTextEntry
+            ref={passwordRef}
+            returnKeyType="next"
+            onSubmitEditing={() => confirmPasswordRef.current.focus()}
+            value={password}
+            onChangeText={setPassword}
+          />
 
-        <FormInput
-          icon="lock-outline"
-          placeholder="Confirmar senha"
-          secureTextEntry
-          ref={confirmPasswordRef}
-          returnKeyType="send"
-          onSubmitEditing={handleSubmit}
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-        />
+          <FormInput
+            icon="lock-outline"
+            placeholder="Confirmar senha"
+            secureTextEntry
+            ref={confirmPasswordRef}
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+          />
 
-        <SubmitButton loading={false} onPress={handleSubmit}>
-          Atualizar perfil
-        </SubmitButton>
-      </Form>
+          <SubmitButton onPress={handleSubmit}>
+            <TextSubmitButton>Atualizar perfil</TextSubmitButton>
+          </SubmitButton>
+        </Form>
+      </Container>
     </Background>
   );
 }

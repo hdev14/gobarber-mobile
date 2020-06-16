@@ -1,10 +1,30 @@
+import {TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
+
+export const Container = styled.SafeAreaView`
+  flex: 1;
+`;
 
 export const Form = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {padding: 30},
 })`
   margin-top: 15px;
+  align-self: stretch;
+`;
+
+export const SubmitButton = styled(TouchableOpacity)`
+  height: 46px;
+  justify-content: center;
+  align-items: center;
+  background-color: #321313;
+  border-radius: 4px;
+`;
+
+export const TextSubmitButton = styled.Text`
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
 `;
 
 export const Separator = styled.View`
