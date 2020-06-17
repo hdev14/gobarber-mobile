@@ -8,6 +8,7 @@ import SignIn from './screens/SignIn';
 import SignOut from './screens/SignOut';
 import Dashboard from './screens/Dashboard';
 import Profile from './screens/Profile';
+import New from './screens/New';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -32,6 +33,18 @@ export default function Routes() {
           tabBarLabel: 'Agendamentos',
           tabBarIcon: ({color, size}) => (
             <Icon name="dashboard" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="new"
+        component={New}
+        options={{
+          tabBarVisible: false,
+          tabBarLabel: 'Agendar',
+          tabBarIcon: ({color, size}) => (
+            <Icon name="add-circle-outline" color={color} size={size} />
           ),
         }}
       />
