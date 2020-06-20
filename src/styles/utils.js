@@ -62,6 +62,12 @@ export const LinkTextBold = styled.Text`
   font-size: 15px;
 `;
 
+export const Avatar = styled.Image`
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+`;
+
 // --color1: #f9f5f0;
 // --color2: #f2ead3;
 // --color3: #f4991a;

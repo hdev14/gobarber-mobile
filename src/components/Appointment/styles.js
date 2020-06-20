@@ -27,12 +27,6 @@ export const Left = styled.View`
   align-items: center;
 `;
 
-export const Avatar = styled.Image`
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
-`;
-
 export const Info = styled.View`
   margin-left: 15px;
 `;

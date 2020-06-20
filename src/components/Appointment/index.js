@@ -4,7 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
-import {AppointmentShape, Left, Avatar, Info, Title, Time} from './styles';
+import {Avatar} from '../../styles/utils';
+import {AppointmentShape, Left, Info, Title, Time} from './styles';
 
 export default function Appointment({data, handleCancel}) {
   const dateRelative = useMemo(() => {

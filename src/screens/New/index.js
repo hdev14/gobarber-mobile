@@ -9,6 +9,12 @@ import ConfirmAppointment from './ConfirmAppointment';
 
 const Stack = createStackNavigator();
 
+const LeftIcon = (color, handleOnPress) => (
+  <TouchableOpacity onPress={handleOnPress}>
+    <Icon name="chevron-left" size={35} color={color} />
+  </TouchableOpacity>
+);
+
 export default function New({navigation}) {
   return (
     <Stack.Navigator
@@ -22,18 +28,31 @@ export default function New({navigation}) {
       }}>
       <Stack.Screen
         name="select-provider"
-        options={{
-          title: 'Selecionar Prestador',
-          headerLeft: ({color}) => (
-            <TouchableOpacity onPress={() => navigation.navigate('dashboard')}>
-              <Icon name="chevron-left" size={35} color={color} />
-            </TouchableOpacity>
-          ),
-        }}
         component={SelectProvider}
+        options={{
+          title: 'Selecione o prestador',
+          headerLeft: ({color}) =>
+            LeftIcon(color, () => navigation.navigate('dashboard')),
+        }}
       />
-      <Stack.Screen name="select-datatime" component={SelectDateTime} />
-      <Stack.Screen name="confirm-appointment" component={ConfirmAppointment} />
+      <Stack.Screen
+        name="select-datetime"
+        component={SelectDateTime}
+        options={{
+          title: 'Selecione o horário',
+          headerLeft: ({color}) =>
+            LeftIcon(color, () => navigation.navigate('select-provider')),
+        }}
+      />
+      <Stack.Screen
+        name="confirm-appointment"
+        component={ConfirmAppointment}
+        options={{
+          title: 'Confirmar agendamento',
+          headerLeft: ({color}) =>
+            LeftIcon(color, () => navigation.navigate('select-date-time')),
+        }}
+      />
     </Stack.Navigator>
   );
 }
