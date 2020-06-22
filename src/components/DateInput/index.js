@@ -9,18 +9,19 @@ import {DateInputShape, DateText} from './styles';
 
 export default function DateInput({date, onChange}) {
   const [opened, setOpened] = useState(false);
-  
+
   const formatedDate = useMemo(
     () => format(date, "dd 'de' MMMM 'de' yyyy", {locale: pt}),
     [date],
   );
 
-  function handleDate(evt, selectedDate) {
+  function setDate(evt, selectedDate) {
+    setOpened(false);
     if (selectedDate !== undefined) {
       onChange(selectedDate);
     }
   }
-  
+
   return (
     <>
       <DateInputShape onPress={() => setOpened(!opened)}>
@@ -32,13 +33,12 @@ export default function DateInput({date, onChange}) {
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
-          onChange={handleDate}
+          onChange={setDate}
           minimumDate={new Date()}
           minuteInterval={60}
           locale="pt"
           mode="date"
           display="spinner"
-          is24Hour={true}
         />
       )}
     </>
