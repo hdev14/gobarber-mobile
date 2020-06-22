@@ -15,6 +15,12 @@ export default function DateInput({date, onChange}) {
     [date],
   );
 
+  function handleDate(evt, selectedDate) {
+    if (selectedDate !== undefined) {
+      onChange(selectedDate);
+    }
+  }
+  
   return (
     <>
       <DateInputShape onPress={() => setOpened(!opened)}>
@@ -26,7 +32,7 @@ export default function DateInput({date, onChange}) {
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
-          onChange={(evt, selectedDate) => onChange(selectedDate)}
+          onChange={handleDate}
           minimumDate={new Date()}
           minuteInterval={60}
           locale="pt"
