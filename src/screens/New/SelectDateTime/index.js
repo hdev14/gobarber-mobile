@@ -7,7 +7,7 @@ import DateInput from '../../../components/DateInput';
 import {Background} from '../../../styles/utils';
 import {Container, Availabilities, Hours, HoursText} from './styles';
 
-export default function SelectDateTime({route}) {
+export default function SelectDateTime({route, navigation}) {
   const [date, setDate] = useState(new Date());
   const [availabilities, setAvailabilities] = useState([]);
   const {provider} = route.params;
@@ -25,6 +25,13 @@ export default function SelectDateTime({route}) {
     fetchAvailabilities();
   }, [date, provider.id]);
 
+  function handleSelect(datetime) {
+    navigation.navigate('confirm-appointment', {
+      provider,
+      datetime,
+    });
+  }
+
   return (
     <Background>
       <Container>
@@ -34,7 +41,7 @@ export default function SelectDateTime({route}) {
           data={availabilities}
           keyExtractor={(item) => item.time}
           renderItem={({item: a}) => (
-            <Hours onPress={() => {}} enabled={a.available}>
+            <Hours onPress={() => handleSelect(a.value)} enabled={a.available}>
               <HoursText>{a.time}</HoursText>
             </Hours>
           )}
