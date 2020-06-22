@@ -9,7 +9,7 @@ import {DateInputShape, DateText} from './styles';
 
 export default function DateInput({date, onChange}) {
   const [opened, setOpened] = useState(false);
-
+  
   const formatedDate = useMemo(
     () => format(date, "dd 'de' MMMM 'de' yyyy", {locale: pt}),
     [date],

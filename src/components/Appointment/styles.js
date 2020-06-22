@@ -8,7 +8,6 @@ export const AppointmentShape = styled.View.attrs({
   },
   shadowOpacity: 0.25,
   shadowRadius: 3.84,
-
   elevation: 3,
 })`
   flex-direction: row;
