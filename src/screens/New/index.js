@@ -50,7 +50,7 @@ export default function New({navigation}) {
         options={{
           title: 'Confirmar agendamento',
           headerLeft: ({color}) =>
-            LeftIcon(color, () => navigation.navigate('select-date-time')),
+            LeftIcon(color, () => navigation.navigate('select-datetime')),
         }}
       />
     </Stack.Navigator>

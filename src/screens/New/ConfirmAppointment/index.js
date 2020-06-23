@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react';
+import {CommonActions} from '@react-navigation/native';
 import {formatRelative, parseISO} from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
@@ -21,7 +22,12 @@ export default function ConfirmAppointment({route, navigation}) {
     });
 
     if (response.status === 200) {
-      navigation.navigate('dashboard');
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{name: 'dashboard'}],
+        }),
+      );
     }
   }
 
