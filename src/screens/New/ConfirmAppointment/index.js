@@ -9,7 +9,7 @@ import {Appointment, Avatar, Time, SubmitButton, SBText} from './styles';
 
 export default function ConfirmAppointment({route, navigation}) {
   const {provider, datetime} = route.params;
-  
+
   const formatedDateTime = useMemo(() => {
     return formatRelative(parseISO(datetime), new Date(), {locale: pt});
   }, [datetime]);
